@@ -5,7 +5,11 @@
   --darkGrey: #464D53;
   --caloryCard: #656565;
   --planCard: linear-gradient(210.41deg, #fa5042 1.14%, #ffa739 100.75%);
-  --appColor:  #3c3f45;
+  
+  --appColor: #2d2d2d; /* Dark background color */
+  --appColorLight: #3a3a3a; /* Lighter shade for interactive elements */
+  --appColorDark: #1f1f1f; /* Darker shade for hover effects */
+  --highlightColor: #f0a500;
 }
 
 .App {

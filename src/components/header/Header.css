@@ -1,34 +1,127 @@
+/* General Styles */
 .header {
     display: flex;
     justify-content: space-between;
-}
-
-.logo {
-    width: 10rem;
-    height: 3rem;
-}
-
-.header-menu {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-    color: white;
-}
-
-.header-menu > li:hover {
-    color: var(--orange);
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--appColor);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1000;
+  }
+  
+  .logo {
+    width: 120px; /* Slightly larger for better visibility */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .logo:hover {
+    transform: scale(1.1); /* Subtle hover effect on the logo */
+  }
+  
+  /* Hamburger Button Styling */
+  .hamburger {
+    background-color: var(--appColorLight); /* Lighter shade for better contrast */
+    padding: 0.5rem;
+    border-radius: 5px;
     cursor: pointer;
-}
-
-@media screen and (max-width: 768px) {
-    .header > :nth-child(2) {
-        position: fixed;
-        right: 2rem;
-        z-index: 99;
-    }
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  .hamburger:hover {
+    background-color: var(--appColorDark); /* Change color on hover */
+  }
+  
+  .hamburger img {
+    width: 1.8rem; /* Slightly larger for better visibility */
+    height: 1.8rem;
+  }
+  
+  /* Header Menu Styling */
+  .header-menu {
+    display: flex;
+    gap: 2rem; /* Increased gap for better spacing */
+  }
+  
+  .header-menu li {
+    list-style: none;
+  }
+  
+  .header-menu li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Hover Effect on Menu Items */
+  .header-menu li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 2px;
+    width: 0;
+    background-color: #fff;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .header-menu li a:hover::after {
+    width: 100%; /* Underline animation on hover */
+  }
+  
+  .header-menu li a:hover {
+    color: var(--highlightColor); /* Optional highlight color on hover */
+  }
+  
+  /* Mobile Menu Styling */
+  @media (max-width: 768px) {
     .header-menu {
-        flex-direction: column;
-        background-color: var(--appColor);
-        padding: 2rem;
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      position: absolute;
+      top: 70px;
+      right: 0;
+      background-color: var(--appColor);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+      transform: translateY(-20px); /* Initially hidden off-screen */
+      z-index: 100;
     }
-}
+  
+    .header-menu.opened {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0); /* Slide down effect on open */
+    }
+  
+    .header-menu li a {
+      font-size: 1.2rem;
+      padding: 0.75rem;
+    }
+  }
+  
+  /* Animation for Menu Opening */
+  .header-menu.opened {
+    animation: fadeIn 0.5s ease;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
